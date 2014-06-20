@@ -15,7 +15,7 @@ using flixel.util.FlxSpriteUtil;
  */
 class MenuState extends FlxState
 {
-	private var btnPlay:FlxButton;
+	private var _btnPlay:FlxButton;
 	
 	/**
 	 * Function that is called up when to state is created to set it up. 
@@ -23,9 +23,9 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		btnPlay = new FlxButton(0, 0, "Play", clickPlay);
-		btnPlay.screenCenter();
-		add(btnPlay);
+		_btnPlay = new FlxButton(0, 0, "Play", clickPlay);
+		_btnPlay.screenCenter();
+		add(_btnPlay);
 	}
 	
 	/**
@@ -35,7 +35,7 @@ class MenuState extends FlxState
 	override public function destroy():Void
 	{
 		super.destroy();
-		btnPlay = FlxDestroyUtil.destroy(btnPlay);
+		_btnPlay = FlxDestroyUtil.destroy(_btnPlay);
 	}
 
 	/**
