@@ -6,19 +6,26 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxDestroyUtil;
+
+using flixel.util.FlxSpriteUtil;
 
 /**
  * A FlxState which can be used for the game's menu.
  */
 class MenuState extends FlxState
 {
+	private var btnPlay:FlxButton;
+	
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
 	override public function create():Void
 	{
 		super.create();
-		add(new FlxText(10, 10, 100, "HEllo World"));
+		btnPlay = new FlxButton(0, 0, "Play", clickPlay);
+		btnPlay.screenCenter();
+		add(btnPlay);
 	}
 	
 	/**
@@ -28,6 +35,7 @@ class MenuState extends FlxState
 	override public function destroy():Void
 	{
 		super.destroy();
+		btnPlay = FlxDestroyUtil.destroy(btnPlay);
 	}
 
 	/**
@@ -37,4 +45,8 @@ class MenuState extends FlxState
 	{
 		super.update();
 	}	
+	
+	private function clickPlay() {
+		FlxG.switchState(new PlayState());
+	}
 }
